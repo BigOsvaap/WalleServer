@@ -17,7 +17,7 @@ public class ComponentScanner {
         File[] directoryListing = dir.listFiles();
         if (directoryListing != null) {
             for (File child : directoryListing) {
-                if (child.isFile()) {
+                if (child.getName().endsWith(".class")) {
                     classes.add(child);
                 } else if (child.isDirectory()) {
                     scanForClasses(child.getAbsolutePath(), classes);

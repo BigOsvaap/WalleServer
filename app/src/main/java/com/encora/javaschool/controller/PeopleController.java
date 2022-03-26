@@ -13,7 +13,7 @@ import java.util.List;
 @RestController("/people")
 public class PeopleController {
 
-    private PersonService service = new PersonService();
+    private final PersonService service = new PersonService();
 
     @GET
     public List<Person> getPeople() {
