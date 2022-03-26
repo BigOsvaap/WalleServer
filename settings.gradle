@@ -9,3 +9,4 @@
 
 rootProject.name = 'WalleServer'
 include('app')
+include('framework')

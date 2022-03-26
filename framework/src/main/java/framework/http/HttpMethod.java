@@ -1,4 +1,4 @@
-package WalleServer.http;
+package framework.http;
 
 public class HttpMethod {
 
