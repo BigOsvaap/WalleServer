@@ -1,18 +1,20 @@
 package framework;
 
+import framework.core.ApplicationContext;
+
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class Walle {
 
-    public static void run(Class<?> mainClass, String[] args)  {
+    public static void run(Class<?> mainClass, String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IOException {
 
         String mainPackage = mainClass.getPackageName();
-        String path = mainClass.getClassLoader().getResource("").getPath() + mainPackage.replace(".", File.separator);
+        ClassLoader contextClassLoader = mainClass.getClassLoader();
+        String path = contextClassLoader.getResource("").getPath() + mainPackage.replace(".", File.separator);
 
-        List<File> classes = ComponentScanner.scanForClasses(path);
-
-        WalleServerLoader.loadServer(classes, mainPackage);
+        ApplicationContext.init(contextClassLoader, mainPackage, path);
 
     }
 

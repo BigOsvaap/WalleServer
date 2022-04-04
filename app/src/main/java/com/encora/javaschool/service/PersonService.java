@@ -1,14 +1,20 @@
 package com.encora.javaschool.service;
 
 import com.encora.javaschool.domain.Person;
+import framework.http.annotations.Autowired;
+import framework.http.annotations.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class PersonService {
 
     private final List<Person> personList;
+
+    @Autowired
+    private UselessService service;
 
     public PersonService() {
         personList = new ArrayList<>();
